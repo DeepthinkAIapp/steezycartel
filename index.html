@@ -141,34 +141,41 @@
     window.addEventListener('DOMContentLoaded', function() {
       const audio = document.getElementById('feature-audio');
       const btn = document.getElementById('feature-audio-btn');
-      audio.muted = true;
-      audio.play();
-      let isPlaying = false;
+      
+      if (audio && btn) {
+        audio.muted = true;
+        // Remove autoplay attribute and handle play on user interaction
+        audio.removeAttribute('autoplay');
+        
+        let isPlaying = false;
 
-      btn.addEventListener('click', function() {
-        if (audio.paused) {
-          audio.muted = false;
-          audio.play();
-          btn.textContent = 'Pause Feature Song';
-          isPlaying = true;
-        } else {
-          audio.pause();
+        btn.addEventListener('click', function() {
+          if (audio.paused) {
+            audio.muted = false;
+            audio.play().catch(error => {
+              console.log('Audio playback failed:', error);
+            });
+            btn.textContent = 'Pause Feature Song';
+            isPlaying = true;
+          } else {
+            audio.pause();
+            btn.textContent = 'Play Feature Song';
+            isPlaying = false;
+          }
+        });
+
+        // Optional: update button if user pauses audio via other means
+        audio.addEventListener('pause', function() {
           btn.textContent = 'Play Feature Song';
           isPlaying = false;
-        }
-      });
-
-      // Optional: update button if user pauses audio via other means
-      audio.addEventListener('pause', function() {
-        btn.textContent = 'Play Feature Song';
-        isPlaying = false;
-      });
-      audio.addEventListener('play', function() {
-        if (!audio.muted) {
-          btn.textContent = 'Pause Feature Song';
-          isPlaying = true;
-        }
-      });
+        });
+        audio.addEventListener('play', function() {
+          if (!audio.muted) {
+            btn.textContent = 'Pause Feature Song';
+            isPlaying = true;
+          }
+        });
+      }
     });
 
     // Section reveal on scroll
@@ -238,31 +245,34 @@
     const nextBtn = document.querySelector('.lightbox-next');
     let currentIndex = 0;
 
-    function openLightbox(index) {
-      lightbox.style.display = 'flex';
-      lightboxImg.src = galleryImages[index];
-      currentIndex = index;
+    if (galleryGrid && lightbox && lightboxImg && closeBtn && prevBtn && nextBtn) {
+      function openLightbox(index) {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = galleryImages[index];
+        currentIndex = index;
+      }
+      function closeLightbox() {
+        lightbox.style.display = 'none';
+      }
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        lightboxImg.src = galleryImages[currentIndex];
+      }
+      function showNext() {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        lightboxImg.src = galleryImages[currentIndex];
+      }
+      galleryGrid.querySelectorAll('.gallery-img').forEach((img, idx) => {
+        img.addEventListener('click', () => openLightbox(idx));
+      });
+      closeBtn.addEventListener('click', closeLightbox);
+      prevBtn.addEventListener('click', showPrev);
+      nextBtn.addEventListener('click', showNext);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
     }
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentIndex];
-    }
-    function showNext() {
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentIndex];
-    }
-    galleryGrid.querySelectorAll('.gallery-img').forEach((img, idx) => {
-      img.addEventListener('click', () => openLightbox(idx));
-    });
-    closeBtn.addEventListener('click', closeLightbox);
-    prevBtn.addEventListener('click', showPrev);
-    nextBtn.addEventListener('click', showNext);
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
+
     document.addEventListener('keydown', (e) => {
       if (lightbox.style.display === 'flex') {
         if (e.key === 'ArrowLeft') showPrev();
