@@ -35,7 +35,8 @@
     {
       "src": "/styles.css",
       "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
+        "cache-control": "public, max-age=31536000, immutable",
+        "Content-Type": "text/css"
       }
     }
   ],
