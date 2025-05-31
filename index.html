@@ -195,90 +195,79 @@
     window.addEventListener('DOMContentLoaded', revealSections);
 
     // Gallery Lightbox
-    const galleryImages = [
-      "images/gallery/465500964_10228474758347966_8892002523208963267_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/465282180_10228472407449195_71663980249928777_n-topaz-enhance-3.5x-faceai.jpg",
-      "images/gallery/465275015_10228452102021572_5363070361541953108_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/464310980_10228289873405958_6806395682007992659_n-topaz-enhance-3.9x-faceai.jpg",
-      "images/gallery/464288307_10228287584508737_9217522046982429217_n-topaz-denoise-enhance-2x.jpg",
-      "images/gallery/464147105_10228260441270173_7950410983318275040_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/464187754_10228260441350175_7861954938454935670_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/463786642_10228225389753907_3714019861705016963_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/463683506_10228219922857238_8650290882051880243_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/462487040_10228113659560722_4964827975365017961_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/462468035_10228113448395443_7547152126967427690_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/462133591_10228088998424209_1978180785989261218_n-topaz-enhance-4x.jpg",
-      "images/gallery/462140706_10228085781703793_7130999741156155859_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/462193510_10228082039890250_4975259316099105882_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/461949251_10228076376028657_6619412820836069846_n-topaz-enhance-4x.jpg",
-      "images/gallery/461795804_10228058463420853_6028465775571095664_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/461586653_10228017545077920_3379594009406242005_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/461105401_10227977164548432_7851564739897419280_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/460969778_10227965289771570_7477880061444419509_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/460951209_10227959225339963_2875895470223218281_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/461064900_10227953299511821_4794134959562191333_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/460633367_10227936168083546_2107149022362672758_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/460448740_10227926373158679_8133741821506183635_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/459360682_10227845233730244_8041734773268652791_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/458723027_10227800082921502_3019781485456070458_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/458192309_10227773759703438_7863889548512792061_n-topaz-enhance-4x.jpg",
-      "images/gallery/458166288_10227748600594476_7749681373396226741_n-topaz-enhance-4x.jpg",
-      "images/gallery/458216698_10227742439920463_863273735046080272_n-topaz-enhance-4x.jpg",
-      "images/gallery/457396995_10227734737567909_1639115588208179153_n-topaz-enhance-4x.jpg",
-      "images/gallery/456866313_10227684644195606_217293823899564668_n-topaz-enhance-4x.jpg",
-      "images/gallery/456438429_10227625263151117_5560819521861633734_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/456333037_10227607975318932_5403143949919438829_n-topaz-enhance-4x.jpg",
-      "images/gallery/456214745_10227607973758893_3378893385273481301_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/456332256_10227607970958823_6783131553772141614_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/454751332_10227529195709491_2817133501363678996_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/454875934_10227529195909496_6832989988149585647_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/454742579_10227504932902936_2016828083770839087_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/449132892_10227160229965578_1398746941350220088_n-topaz-enhance-4x-faceai.jpg",
-      "images/gallery/465791922_10228581202208996_4423271930912780830_n-topaz-enhance-4x.jpg",
-      "images/gallery/465818926_10228536642375028_3838721999786797874_n-topaz-enhance-3.5x-faceai.jpg"
-    ];
-    const galleryGrid = document.querySelector('.gallery-grid');
-    const lightbox = document.getElementById('gallery-lightbox');
-    const lightboxImg = document.querySelector('.lightbox-img');
-    const closeBtn = document.querySelector('.lightbox-close');
-    const prevBtn = document.querySelector('.lightbox-prev');
-    const nextBtn = document.querySelector('.lightbox-next');
-    let currentIndex = 0;
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleryGrid = document.querySelector('.gallery-grid');
+      const lightbox = document.getElementById('gallery-lightbox');
+      const lightboxImg = document.querySelector('.lightbox-img');
+      const closeBtn = document.querySelector('.lightbox-close');
+      const prevBtn = document.querySelector('.lightbox-prev');
+      const nextBtn = document.querySelector('.lightbox-next');
+      let currentIndex = 0;
 
-    if (galleryGrid && lightbox && lightboxImg && closeBtn && prevBtn && nextBtn) {
+      if (!galleryGrid || !lightbox || !lightboxImg || !closeBtn || !prevBtn || !nextBtn) {
+        console.warn('Some gallery elements are missing, gallery functionality may be limited');
+        return;
+      }
+
       function openLightbox(index) {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = galleryImages[index];
-        currentIndex = index;
+        try {
+          lightbox.style.display = 'flex';
+          lightboxImg.src = galleryImages[index];
+          currentIndex = index;
+        } catch (error) {
+          console.error('Error opening lightbox:', error);
+        }
       }
+
       function closeLightbox() {
-        lightbox.style.display = 'none';
+        try {
+          lightbox.style.display = 'none';
+        } catch (error) {
+          console.error('Error closing lightbox:', error);
+        }
       }
+
       function showPrev() {
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-        lightboxImg.src = galleryImages[currentIndex];
+        try {
+          currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+          lightboxImg.src = galleryImages[currentIndex];
+        } catch (error) {
+          console.error('Error showing previous image:', error);
+        }
       }
+
       function showNext() {
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-        lightboxImg.src = galleryImages[currentIndex];
+        try {
+          currentIndex = (currentIndex + 1) % galleryImages.length;
+          lightboxImg.src = galleryImages[currentIndex];
+        } catch (error) {
+          console.error('Error showing next image:', error);
+        }
       }
-      galleryGrid.querySelectorAll('.gallery-img').forEach((img, idx) => {
-        img.addEventListener('click', () => openLightbox(idx));
-      });
+
+      // Add event listeners only if elements exist
+      const galleryImages = galleryGrid.querySelectorAll('.gallery-img');
+      if (galleryImages.length > 0) {
+        galleryImages.forEach((img, idx) => {
+          img.addEventListener('click', () => openLightbox(idx));
+        });
+      }
+
       closeBtn.addEventListener('click', closeLightbox);
       prevBtn.addEventListener('click', showPrev);
       nextBtn.addEventListener('click', showNext);
       lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
       });
-    }
 
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display === 'flex') {
-        if (e.key === 'ArrowLeft') showPrev();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'Escape') closeLightbox();
-      }
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+          if (e.key === 'ArrowLeft') showPrev();
+          if (e.key === 'ArrowRight') showNext();
+          if (e.key === 'Escape') closeLightbox();
+        }
+      });
     });
 
     // z-SIXTY Gallery Lightbox

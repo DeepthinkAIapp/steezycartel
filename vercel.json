@@ -3,7 +3,7 @@
   "public": true,
   "headers": [
     {
-      "source": "/(.*)\\.css$",
+      "source": "/styles.css",
       "headers": [
         {
           "key": "Content-Type",
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(jpg|jpeg|png|gif|webp)$",
+      "source": "/images/(.*)",
       "headers": [
         {
           "key": "Content-Type",
@@ -21,13 +21,36 @@
       ]
     },
     {
-      "source": "/(.*)\\.(mp3|wav)$",
+      "source": "/music/(.*)",
       "headers": [
         {
           "key": "Content-Type",
           "value": "audio/$1"
         }
       ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/styles.css",
+      "dest": "/styles.css",
+      "headers": {
+        "Content-Type": "text/css"
+      }
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/images/$1",
+      "headers": {
+        "Content-Type": "image/$1"
+      }
+    },
+    {
+      "src": "/music/(.*)",
+      "dest": "/music/$1",
+      "headers": {
+        "Content-Type": "audio/$1"
+      }
     }
   ]
 } 
