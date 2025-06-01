@@ -144,19 +144,19 @@
       
       if (audio && btn) {
         audio.muted = true;
-        // Remove autoplay attribute and handle play on user interaction
         audio.removeAttribute('autoplay');
         
         let isPlaying = false;
 
         btn.addEventListener('click', function() {
-          if (audio.paused) {
+          if (audio.paused || audio.ended) {
             audio.muted = false;
-            audio.play().catch(error => {
+            audio.play().then(() => {
+              btn.textContent = 'Pause Feature Song';
+              isPlaying = true;
+            }).catch(error => {
               console.log('Audio playback failed:', error);
             });
-            btn.textContent = 'Pause Feature Song';
-            isPlaying = true;
           } else {
             audio.pause();
             btn.textContent = 'Play Feature Song';
@@ -545,8 +545,6 @@
         <p>Rising star with a unique flow and undeniable presence.</p>
         <button class="artist-playlist-btn" data-artist="zsixty">View Playlist</button>
         <div class="artist-playlist" id="zsixty-playlist">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/myi5Zop4Syk" title="Night Moves - z-SIXTY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/DfMgNN_CkOI" title="Steezy Cartel Short - z-SIXTY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
           <div class="audio-track">
             <h4>Khloe - z-SIXTY</h4>
             <audio controls>
