@@ -1,4 +1,36 @@
 {
   "version": 2,
-  "public": true
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*).css",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).(jpg|jpeg|png|gif|webp)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/$1"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).(mp3|wav)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "audio/$1"
+        }
+      ]
+    }
+  ]
 } 
