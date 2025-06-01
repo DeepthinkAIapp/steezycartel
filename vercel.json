@@ -1,36 +1,11 @@
 {
   "version": 2,
+  "builds": [
+    { "src": "**/*", "use": "@vercel/static" }
+  ],
   "routes": [
+    { "src": "/(.*)\\.css", "headers": { "content-type": "text/css" } },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)\\.css",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/css"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).(jpg|jpeg|png|gif|webp)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "image/$1"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).(mp3|wav)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "audio/$1"
-        }
-      ]
-    }
   ]
 } 
