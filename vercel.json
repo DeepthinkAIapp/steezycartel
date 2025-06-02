@@ -5,31 +5,5 @@
       "src": "public/**",
       "use": "@vercel/static"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/music/(.*)\\.wav$",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "audio/wav"
-        }
-      ]
-    },
-    {
-      "source": "/music/(.*)\\.mp3$",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "audio/mpeg"
-        }
-      ]
-    }
   ]
 } 
