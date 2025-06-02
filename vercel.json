@@ -57,5 +57,6 @@
         }
       ]
     }
-  ]
+  ],
+  "comment": "Trigger redeploy"
 } 
