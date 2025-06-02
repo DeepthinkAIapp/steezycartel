@@ -135,7 +135,7 @@
       </div>
     </div>
   </nav>
-  <audio id="feature-audio" src="/music/bumbleitoff.wav" type="audio/wav" autoplay loop muted></audio>
+  <audio id="feature-audio" src="/music/bumbleitoff.wav" type="audio/wav" preload="none"></audio>
   <script>
     // Feature song autoplay (muted by default)
     window.addEventListener('DOMContentLoaded', function() {
@@ -148,6 +148,12 @@
         
         let isPlaying = false;
 
+        // Add error handling for audio loading
+        audio.addEventListener('error', function(e) {
+          console.warn('Audio loading error:', e);
+          btn.style.display = 'none'; // Hide button if audio fails to load
+        });
+
         btn.addEventListener('click', function() {
           if (audio.paused || audio.ended) {
             audio.muted = false;
@@ -155,7 +161,9 @@
               btn.textContent = 'Pause Feature Song';
               isPlaying = true;
             }).catch(error => {
-              console.log('Audio playback failed:', error);
+              console.warn('Audio playback failed:', error);
+              btn.textContent = 'Play Feature Song';
+              isPlaying = false;
             });
           } else {
             audio.pause();
@@ -854,10 +862,10 @@
               button.textContent = 'Pause';
             })
             .catch(error => {
-              console.error('Error playing audio:', error);
+              console.warn('Error playing audio:', error);
               button.textContent = 'Play';
-              // Show error to user
-              alert('Error playing audio. Please try again.');
+              button.disabled = true; // Disable button if playback fails
+              button.title = 'Audio unavailable';
             });
         }
       } else {
@@ -870,6 +878,9 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize all audio elements
       document.querySelectorAll('audio').forEach(audio => {
+        // Set preload to none to improve performance
+        audio.setAttribute('preload', 'none');
+        
         // Add ended event listener
         audio.addEventListener('ended', function() {
           const button = this.parentElement.querySelector('.play-btn');
@@ -878,11 +889,13 @@
 
         // Add error event listener
         audio.addEventListener('error', function(e) {
-          console.error('Audio error:', e);
+          console.warn('Audio error:', e);
           const button = this.parentElement.querySelector('.play-btn');
-          if (button) button.textContent = 'Play';
-          // Show error to user
-          alert('Error loading audio. Please try again later.');
+          if (button) {
+            button.textContent = 'Play';
+            button.disabled = true;
+            button.title = 'Audio unavailable';
+          }
         });
 
         // Add loadedmetadata event listener
@@ -894,9 +907,6 @@
         audio.addEventListener('canplay', function() {
           console.log(`Audio ${this.id} can play`);
         });
-
-        // Preload metadata
-        audio.load();
       });
 
       // Add click event listeners to all download buttons

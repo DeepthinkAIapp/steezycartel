@@ -915,15 +915,14 @@ h1 {
   }
 }
 
-/* Replace -ms-high-contrast with forced-colors */
 @media (forced-colors: active) {
-  /* Add your high contrast styles here */
   .navbar-logo img,
   .social-links img {
     forced-color-adjust: none;
   }
 }
 
+/* Remove deprecated -ms-high-contrast media query */
 /* Add support for both old and new standards */
 @media screen and (-ms-high-contrast: active), (forced-colors: active) {
   /* Add your high contrast styles here */
