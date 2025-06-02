@@ -181,6 +181,8 @@
     // Section reveal on scroll
     function revealSections() {
       const reveals = document.querySelectorAll('.reveal');
+      if (reveals.length === 0) return;
+      
       const windowHeight = window.innerHeight;
       reveals.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
@@ -202,12 +204,13 @@
       const closeBtn = document.querySelector('.lightbox-close');
       const prevBtn = document.querySelector('.lightbox-prev');
       const nextBtn = document.querySelector('.lightbox-next');
-      let currentIndex = 0;
-
+      
       if (!galleryGrid || !lightbox || !lightboxImg || !closeBtn || !prevBtn || !nextBtn) {
         console.warn('Some gallery elements are missing, gallery functionality may be limited');
         return;
       }
+
+      let currentIndex = 0;
 
       function openLightbox(index) {
         try {
@@ -271,76 +274,97 @@
     });
 
     // z-SIXTY Gallery Lightbox
-    const zsixtyImages = [
-      "/images/gallery/zsixty/Screenshot 2025-05-26 185723.png",
-      "/images/gallery/zsixty/Screenshot 2025-05-26 185607.png",
-      "/images/gallery/zsixty/IMG_0375.jpg"
-    ];
-    const zsixtyGrid = document.querySelector('#gallery-zsixty .gallery-grid');
-    const zsixtyLightbox = document.getElementById('gallery-lightbox-zsixty');
-    const zsixtyLightboxImg = document.querySelector('.lightbox-img-zsixty');
-    const zsixtyCloseBtn = document.querySelector('.lightbox-close-zsixty');
-    const zsixtyPrevBtn = document.querySelector('.lightbox-prev-zsixty');
-    const zsixtyNextBtn = document.querySelector('.lightbox-next-zsixty');
-    let zsixtyCurrentIndex = 0;
+    document.addEventListener('DOMContentLoaded', function() {
+      const zsixtyImages = [
+        "/images/gallery/zsixty/Screenshot 2025-05-26 185723.png",
+        "/images/gallery/zsixty/Screenshot 2025-05-26 185607.png",
+        "/images/gallery/zsixty/IMG_0375.jpg"
+      ];
+      
+      const zsixtyGrid = document.querySelector('#gallery-zsixty .gallery-grid');
+      const zsixtyLightbox = document.getElementById('gallery-lightbox-zsixty');
+      const zsixtyLightboxImg = document.querySelector('.lightbox-img-zsixty');
+      const zsixtyCloseBtn = document.querySelector('.lightbox-close-zsixty');
+      const zsixtyPrevBtn = document.querySelector('.lightbox-prev-zsixty');
+      const zsixtyNextBtn = document.querySelector('.lightbox-next-zsixty');
+      
+      if (!zsixtyGrid || !zsixtyLightbox || !zsixtyLightboxImg || !zsixtyCloseBtn || !zsixtyPrevBtn || !zsixtyNextBtn) {
+        console.warn('Some z-SIXTY gallery elements are missing, gallery functionality may be limited');
+        return;
+      }
 
-    function openZsixtyLightbox(index) {
-      zsixtyLightbox.style.display = 'flex';
-      zsixtyLightboxImg.src = zsixtyImages[index];
-      zsixtyCurrentIndex = index;
-    }
-    function closeZsixtyLightbox() {
-      zsixtyLightbox.style.display = 'none';
-    }
-    function showZsixtyPrev() {
-      zsixtyCurrentIndex = (zsixtyCurrentIndex - 1 + zsixtyImages.length) % zsixtyImages.length;
-      zsixtyLightboxImg.src = zsixtyImages[zsixtyCurrentIndex];
-    }
-    function showZsixtyNext() {
-      zsixtyCurrentIndex = (zsixtyCurrentIndex + 1) % zsixtyImages.length;
-      zsixtyLightboxImg.src = zsixtyImages[zsixtyCurrentIndex];
-    }
-    if (zsixtyGrid) {
+      let zsixtyCurrentIndex = 0;
+
+      function openZsixtyLightbox(index) {
+        zsixtyLightbox.style.display = 'flex';
+        zsixtyLightboxImg.src = zsixtyImages[index];
+        zsixtyCurrentIndex = index;
+      }
+      
+      function closeZsixtyLightbox() {
+        zsixtyLightbox.style.display = 'none';
+      }
+      
+      function showZsixtyPrev() {
+        zsixtyCurrentIndex = (zsixtyCurrentIndex - 1 + zsixtyImages.length) % zsixtyImages.length;
+        zsixtyLightboxImg.src = zsixtyImages[zsixtyCurrentIndex];
+      }
+      
+      function showZsixtyNext() {
+        zsixtyCurrentIndex = (zsixtyCurrentIndex + 1) % zsixtyImages.length;
+        zsixtyLightboxImg.src = zsixtyImages[zsixtyCurrentIndex];
+      }
+
       zsixtyGrid.querySelectorAll('.gallery-img-zsixty').forEach((img, idx) => {
         img.addEventListener('click', () => openZsixtyLightbox(idx));
       });
-    }
-    if (zsixtyCloseBtn) zsixtyCloseBtn.addEventListener('click', closeZsixtyLightbox);
-    if (zsixtyPrevBtn) zsixtyPrevBtn.addEventListener('click', showZsixtyPrev);
-    if (zsixtyNextBtn) zsixtyNextBtn.addEventListener('click', showZsixtyNext);
-    if (zsixtyLightbox) {
+
+      zsixtyCloseBtn.addEventListener('click', closeZsixtyLightbox);
+      zsixtyPrevBtn.addEventListener('click', showZsixtyPrev);
+      zsixtyNextBtn.addEventListener('click', showZsixtyNext);
       zsixtyLightbox.addEventListener('click', (e) => {
         if (e.target === zsixtyLightbox) closeZsixtyLightbox();
       });
-    }
-    document.addEventListener('keydown', (e) => {
-      if (zsixtyLightbox && zsixtyLightbox.style.display === 'flex') {
-        if (e.key === 'ArrowLeft') showZsixtyPrev();
-        if (e.key === 'ArrowRight') showZsixtyNext();
-        if (e.key === 'Escape') closeZsixtyLightbox();
-      }
+
+      document.addEventListener('keydown', (e) => {
+        if (zsixtyLightbox.style.display === 'flex') {
+          if (e.key === 'ArrowLeft') showZsixtyPrev();
+          if (e.key === 'ArrowRight') showZsixtyNext();
+          if (e.key === 'Escape') closeZsixtyLightbox();
+        }
+      });
     });
 
     // Back-to-top button
-    const backToTopBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.style.display = 'block';
-      } else {
-        backToTopBtn.style.display = 'none';
-      }
-    });
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.addEventListener('DOMContentLoaded', function() {
+      const backToTopBtn = document.getElementById('backToTop');
+      if (!backToTopBtn) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.style.display = 'block';
+        } else {
+          backToTopBtn.style.display = 'none';
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     });
 
     // Hamburger menu toggle
-    const navbarToggle = document.getElementById('navbarToggle');
-    const navbarLinks = document.getElementById('navbarLinks');
-    navbarToggle.addEventListener('click', function() {
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !expanded);
-      navbarLinks.classList.toggle('open');
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbarToggle = document.getElementById('navbarToggle');
+      const navbarLinks = document.getElementById('navbarLinks');
+      
+      if (!navbarToggle || !navbarLinks) return;
+
+      navbarToggle.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        navbarLinks.classList.toggle('open');
+      });
     });
   </script>
 
@@ -672,9 +696,9 @@
             <p class="beat-description">Genre: Trap / Future Bass</p>
           </div>
           <div class="beat-controls">
-            <audio id="beat1" src="music/beatsindex/FutreTypeBeat_Master.wa" preload="metadata"></audio>
+            <audio id="beat1" src="/music/beatsindex/FutreTypeBeat_Master.wav" preload="metadata"></audio>
             <button class="play-btn" onclick="togglePlay('beat1', this)">Play</button>
-            <a href="music/beatsindex/FutreTypeBeat_Master.wav" download class="download-btn">Download WAV</a>
+            <a href="/music/beatsindex/FutreTypeBeat_Master.wav" download class="download-btn">Download WAV</a>
           </div>
         </div>
 
