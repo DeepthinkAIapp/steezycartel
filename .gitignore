@@ -22,3 +22,6 @@ yarn-error.log*
 # Dependencies
 node_modules/ 
 .vercel
+
+# Large audio files
+# public/music/beatsindex/*.wav  # Commented out to allow Git LFS tracking
