@@ -660,6 +660,123 @@
     -->
   </section>
 
+  <section id="free-beats" class="section reveal">
+    <div class="container">
+      <h2 class="section-title">Free Beats</h2>
+      <p class="section-description">Download our free beats and use them in your projects. Preview before you download!</p>
+      
+      <div class="beats-grid">
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>Future Type Beat</h3>
+            <p class="beat-description">Genre: Trap / Future Bass</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat1" src="/music/beatsindex/FutreTypeBeat_Master.wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat1', this)">Play</button>
+            <a href="/music/beatsindex/FutreTypeBeat_Master.wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>Aether</h3>
+            <p class="beat-description">Genre: Electronic / Ambient</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat2" src="/music/beatsindex/Aether_Master.wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat2', this)">Play</button>
+            <a href="/music/beatsindex/Aether_Master.wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>Missy Timbaland Type</h3>
+            <p class="beat-description">Genre: Hip Hop / R&B</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat3" src="/music/beatsindex/MissyTimbalandtype_Master.wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat3', this)">Play</button>
+            <a href="/music/beatsindex/MissyTimbalandtype_Master.wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>Levitate</h3>
+            <p class="beat-description">Genre: Trap / Cloud Rap</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat4" src="/music/beatsindex/Levitate_Master.wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat4', this)">Play</button>
+            <a href="/music/beatsindex/Levitate_Master.wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>YN's</h3>
+            <p class="beat-description">Genre: Trap / Drill</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat5" src="/music/beatsindex/YN's_Master.wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat5', this)">Play</button>
+            <a href="/music/beatsindex/YN's_Master.wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>Old School Nights</h3>
+            <p class="beat-description">Genre: Old School Hip Hop</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat6" src="/music/beatsindex/Old School Nights_Master.wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat6', this)">Play</button>
+            <a href="/music/beatsindex/Old School Nights_Master.wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>Bombin'</h3>
+            <p class="beat-description">Genre: Trap / Boom Bap</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat7" src="/music/beatsindex/Bombin'_Master.wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat7', this)">Play</button>
+            <a href="/music/beatsindex/Bombin'_Master.wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>4AM In The City</h3>
+            <p class="beat-description">Genre: Lo-fi / Chill Hop</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat8" src="/music/beatsindex/4Am In The City (mastered).wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat8', this)">Play</button>
+            <a href="/music/beatsindex/4Am In The City (mastered).wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+
+        <div class="beat-card">
+          <div class="beat-info">
+            <h3>Bloodline</h3>
+            <p class="beat-description">Genre: Trap / Dark Trap</p>
+          </div>
+          <div class="beat-controls">
+            <audio id="beat9" src="/music/beatsindex/Bloodline_Current.wav" preload="metadata"></audio>
+            <button class="play-btn" onclick="togglePlay('beat9', this)">Play</button>
+            <a href="/music/beatsindex/Bloodline_Current.wav" download class="download-btn">Download WAV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="news reveal" id="news">
     <h2>News & Updates</h2>
     <ul>
@@ -693,5 +810,61 @@
     <p>&copy; 2025 The Steezy Cartel. All rights reserved.</p>
   </footer>
   <button id="backToTop" class="back-to-top" title="Back to top">&#8679;</button>
+
+  <script>
+    // Beat player functionality
+    function togglePlay(beatId, button) {
+      const audio = document.getElementById(beatId);
+      const allAudios = document.querySelectorAll('audio');
+      
+      // Stop all other playing beats
+      allAudios.forEach(a => {
+        if (a.id !== beatId && !a.paused) {
+          a.pause();
+          a.currentTime = 0;
+          const otherButton = a.parentElement.querySelector('.play-btn');
+          if (otherButton) otherButton.textContent = 'Play';
+        }
+      });
+
+      if (audio.paused) {
+        audio.play().then(() => {
+          button.textContent = 'Pause';
+        }).catch(error => {
+          console.error('Error playing audio:', error);
+          button.textContent = 'Play';
+        });
+      } else {
+        audio.pause();
+        button.textContent = 'Play';
+      }
+    }
+
+    // Add event listeners when the DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add ended event listeners to all audio elements
+      document.querySelectorAll('audio').forEach(audio => {
+        audio.addEventListener('ended', function() {
+          const button = this.parentElement.querySelector('.play-btn');
+          if (button) button.textContent = 'Play';
+        });
+      });
+
+      // Add click event listeners to all download buttons
+      document.querySelectorAll('.download-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+          // Stop any playing audio when downloading
+          document.querySelectorAll('audio').forEach(audio => {
+            if (!audio.paused) {
+              audio.pause();
+              audio.currentTime = 0;
+              const playButton = audio.parentElement.querySelector('.play-btn');
+              if (playButton) playButton.textContent = 'Play';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html> 

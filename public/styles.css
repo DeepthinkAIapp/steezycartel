@@ -823,4 +823,94 @@ h1 {
 .audio-track audio::-webkit-media-controls-current-time-display,
 .audio-track audio::-webkit-media-controls-time-remaining-display {
   color: white;
+}
+
+/* Free Beats Section */
+.beats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.beat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.beat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.beat-info {
+  margin-bottom: 1rem;
+}
+
+.beat-info h3 {
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.beat-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.beat-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.play-btn, .download-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.play-btn {
+  background: #ff4d4d;
+  color: white;
+  flex: 1;
+}
+
+.play-btn:hover {
+  background: #ff3333;
+}
+
+.download-btn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #ff4d4d;
+  flex: 1;
+}
+
+.download-btn:hover {
+  background: rgba(255, 77, 77, 0.1);
+}
+
+@media (max-width: 768px) {
+  .beats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .beat-controls {
+    flex-direction: column;
+  }
+  
+  .play-btn, .download-btn {
+    width: 100%;
+  }
 } 
