@@ -160,8 +160,8 @@
           if (audio.paused || audio.ended) {
             audio.muted = false;
             audio.play().then(() => {
-              btn.textContent = 'Pause Feature Song';
-              isPlaying = true;
+            btn.textContent = 'Pause Feature Song';
+            isPlaying = true;
             }).catch(error => {
               console.warn('Audio playback failed:', error);
               btn.textContent = 'Play Feature Song';
@@ -214,7 +214,7 @@
       const closeBtn = document.querySelector('.lightbox-close');
       const prevBtn = document.querySelector('.lightbox-prev');
       const nextBtn = document.querySelector('.lightbox-next');
-      
+
       if (!galleryGrid || !lightbox || !lightboxImg || !closeBtn || !prevBtn || !nextBtn) {
         console.warn('Some gallery elements are missing, gallery functionality may be limited');
         return;
@@ -285,45 +285,45 @@
 
     // z-SIXTY Gallery Lightbox
     document.addEventListener('DOMContentLoaded', function() {
-      const zsixtyImages = [
-        "/images/gallery/zsixty/Screenshot 2025-05-26 185723.png",
-        "/images/gallery/zsixty/Screenshot 2025-05-26 185607.png",
-        "/images/gallery/zsixty/IMG_0375.jpg"
-      ];
+    const zsixtyImages = [
+      "/images/gallery/zsixty/Screenshot 2025-05-26 185723.png",
+      "/images/gallery/zsixty/Screenshot 2025-05-26 185607.png",
+      "/images/gallery/zsixty/IMG_0375.jpg"
+    ];
       
-      const zsixtyGrid = document.querySelector('#gallery-zsixty .gallery-grid');
-      const zsixtyLightbox = document.getElementById('gallery-lightbox-zsixty');
-      const zsixtyLightboxImg = document.querySelector('.lightbox-img-zsixty');
-      const zsixtyCloseBtn = document.querySelector('.lightbox-close-zsixty');
-      const zsixtyPrevBtn = document.querySelector('.lightbox-prev-zsixty');
-      const zsixtyNextBtn = document.querySelector('.lightbox-next-zsixty');
+    const zsixtyGrid = document.querySelector('#gallery-zsixty .gallery-grid');
+    const zsixtyLightbox = document.getElementById('gallery-lightbox-zsixty');
+    const zsixtyLightboxImg = document.querySelector('.lightbox-img-zsixty');
+    const zsixtyCloseBtn = document.querySelector('.lightbox-close-zsixty');
+    const zsixtyPrevBtn = document.querySelector('.lightbox-prev-zsixty');
+    const zsixtyNextBtn = document.querySelector('.lightbox-next-zsixty');
       
       if (!zsixtyGrid || !zsixtyLightbox || !zsixtyLightboxImg || !zsixtyCloseBtn || !zsixtyPrevBtn || !zsixtyNextBtn) {
         console.warn('Some z-SIXTY gallery elements are missing, gallery functionality may be limited');
         return;
       }
 
-      let zsixtyCurrentIndex = 0;
+    let zsixtyCurrentIndex = 0;
 
-      function openZsixtyLightbox(index) {
-        zsixtyLightbox.style.display = 'flex';
-        zsixtyLightboxImg.src = zsixtyImages[index];
-        zsixtyCurrentIndex = index;
-      }
+    function openZsixtyLightbox(index) {
+      zsixtyLightbox.style.display = 'flex';
+      zsixtyLightboxImg.src = zsixtyImages[index];
+      zsixtyCurrentIndex = index;
+    }
       
-      function closeZsixtyLightbox() {
-        zsixtyLightbox.style.display = 'none';
-      }
+    function closeZsixtyLightbox() {
+      zsixtyLightbox.style.display = 'none';
+    }
       
-      function showZsixtyPrev() {
-        zsixtyCurrentIndex = (zsixtyCurrentIndex - 1 + zsixtyImages.length) % zsixtyImages.length;
-        zsixtyLightboxImg.src = zsixtyImages[zsixtyCurrentIndex];
-      }
+    function showZsixtyPrev() {
+      zsixtyCurrentIndex = (zsixtyCurrentIndex - 1 + zsixtyImages.length) % zsixtyImages.length;
+      zsixtyLightboxImg.src = zsixtyImages[zsixtyCurrentIndex];
+    }
       
-      function showZsixtyNext() {
-        zsixtyCurrentIndex = (zsixtyCurrentIndex + 1) % zsixtyImages.length;
-        zsixtyLightboxImg.src = zsixtyImages[zsixtyCurrentIndex];
-      }
+    function showZsixtyNext() {
+      zsixtyCurrentIndex = (zsixtyCurrentIndex + 1) % zsixtyImages.length;
+      zsixtyLightboxImg.src = zsixtyImages[zsixtyCurrentIndex];
+    }
 
       zsixtyGrid.querySelectorAll('.gallery-img-zsixty').forEach((img, idx) => {
         img.addEventListener('click', () => openZsixtyLightbox(idx));
@@ -336,44 +336,44 @@
         if (e.target === zsixtyLightbox) closeZsixtyLightbox();
       });
 
-      document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', (e) => {
         if (zsixtyLightbox.style.display === 'flex') {
-          if (e.key === 'ArrowLeft') showZsixtyPrev();
-          if (e.key === 'ArrowRight') showZsixtyNext();
-          if (e.key === 'Escape') closeZsixtyLightbox();
-        }
+        if (e.key === 'ArrowLeft') showZsixtyPrev();
+        if (e.key === 'ArrowRight') showZsixtyNext();
+        if (e.key === 'Escape') closeZsixtyLightbox();
+      }
       });
     });
 
     // Back-to-top button
     document.addEventListener('DOMContentLoaded', function() {
-      const backToTopBtn = document.getElementById('backToTop');
+    const backToTopBtn = document.getElementById('backToTop');
       if (!backToTopBtn) return;
 
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.style.display = 'block';
-        } else {
-          backToTopBtn.style.display = 'none';
-        }
-      });
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
       
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
 
     // Hamburger menu toggle
     document.addEventListener('DOMContentLoaded', function() {
-      const navbarToggle = document.getElementById('navbarToggle');
-      const navbarLinks = document.getElementById('navbarLinks');
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarLinks = document.getElementById('navbarLinks');
       
       if (!navbarToggle || !navbarLinks) return;
 
-      navbarToggle.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        navbarLinks.classList.toggle('open');
+    navbarToggle.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      navbarLinks.classList.toggle('open');
       });
     });
   </script>
@@ -694,171 +694,255 @@
       <p class="section-description">Download our free beats and use them in your projects. Preview before you download!</p>
       
       <div class="beats-grid">
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Hunted - Lil Peep Type Beat</h3>
-            <p class="beat-description">Genre: Emo Rap / Cloud Rap</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat1" src="/music/beatsindex/[FREE] Lil Peep Type Beat - Hunted.mp3" type="audio/mpeg" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat1', this)">Play</button>
-            <a href="/music/beatsindex/[FREE] Lil Peep Type Beat - Hunted.mp3" download class="download-btn">Download MP3</a>
+            <div class="beat-title">Hunted - Lil Peep Type Beat</div>
+            <div class="beat-meta">Emo Rap / Cloud Rap</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/[FREE] Lil Peep Type Beat - Hunted.mp3" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="audio1" src="/music/beatsindex/[FREE] Lil Peep Type Beat - Hunted.mp3" type="audio/mpeg"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Aether</h3>
-            <p class="beat-description">Genre: Electronic / Ambient</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat2" src="/music/beatsindex/Aether_Master.mp3" type="audio/mpeg" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat2', this)">Play</button>
-            <a href="/music/beatsindex/Aether_Master.mp3" download class="download-btn">Download MP3</a>
+            <div class="beat-title">Aether x Timbaland x Magoo Type Beat</div>
+            <div class="beat-meta">Electronic / Ambient</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Aether_Master.wav" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat2" src="/music/beatsindex/Aether_Master.wav" type="audio/wav"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Missy Timbaland Type</h3>
-            <p class="beat-description">Genre: Hip Hop / R&B</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat3" src="/music/beatsindex/MissyTimbalandtype_Master.wav" type="audio/wav" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat3', this)">Play</button>
-            <a href="/music/beatsindex/MissyTimbalandtype_Master.wav" download class="download-btn">Download WAV</a>
+            <div class="beat-title">Missyx Timbaland Type Beat</div>
+            <div class="beat-meta">Hip Hop / R&B</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/MissyTimbalandtype_Master.wav" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat3" src="/music/beatsindex/MissyTimbalandtype_Master.wav" type="audio/wav"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Levitate</h3>
-            <p class="beat-description">Genre: Trap / Cloud Rap</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat4" src="/music/beatsindex/Levitate_Master.wav" type="audio/wav" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat4', this)">Play</button>
-            <a href="/music/beatsindex/Levitate_Master.wav" download class="download-btn">Download WAV</a>
+            <div class="beat-title">Levitate x Trap x Steezy Cartel</div>
+            <div class="beat-meta">Trap / Cloud Rap</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Levitate_Master.wav" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat4" src="/music/beatsindex/Levitate_Master.wav" type="audio/wav"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>YN's</h3>
-            <p class="beat-description">Genre: Trap / Drill</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat5" src="/music/beatsindex/YN's_Master.wav" type="audio/wav" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat5', this)">Play</button>
-            <a href="/music/beatsindex/YN's_Master.wav" download class="download-btn">Download WAV</a>
+            <div class="beat-title">YN's - Migos Type Beat</div>
+            <div class="beat-meta">Trap / Drill</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/YN's_Master.wav" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat5" src="/music/beatsindex/YN's_Master.wav" type="audio/wav"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Old School Nights</h3>
-            <p class="beat-description">Genre: Old School Hip Hop</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat6" src="/music/beatsindex/Old School Nights_Master.wav" type="audio/wav" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat6', this)">Play</button>
-            <a href="/music/beatsindex/Old School Nights_Master.wav" download class="download-btn">Download WAV</a>
+            <div class="beat-title">Old School Nights x West Coast Type Beat</div>
+            <div class="beat-meta">Old School Hip Hop</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Old School Nights_Master.wav" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat6" src="/music/beatsindex/Old School Nights_Master.wav" type="audio/wav"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Bombin'</h3>
-            <p class="beat-description">Genre: Trap / Boom Bap</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat7" src="/music/beatsindex/Bombin'_Master.wav" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat7', this)">Play</button>
-            <a href="/music/beatsindex/Bombin'_Master.wav" download class="download-btn">Download WAV</a>
+            <div class="beat-title">Bombin' - Clipse x Noreaga x Pharrell Type Beat</div>
+            <div class="beat-meta">Trap / Boom Bap</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Bombin'_Master.wav" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat7" src="/music/beatsindex/Bombin'_Master.wav" type="audio/wav"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>4AM In The City</h3>
-            <p class="beat-description">Genre: Lo-fi / Chill Hop</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat8" src="/music/beatsindex/4Am In The City (mastered).wav" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat8', this)">Play</button>
-            <a href="/music/beatsindex/4Am In The City (mastered).wav" download class="download-btn">Download WAV</a>
+            <div class="beat-title">4AM In The City x Drake Type Beat</div>
+            <div class="beat-meta">Lo-fi / Chill Hop</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/4Am In The City (mastered).wav" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat8" src="/music/beatsindex/4Am In The City (mastered).wav" type="audio/wav"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Blood</h3>
-            <p class="beat-description">Genre: Trap / Dark Trap</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat9" src="/music/beatsindex/Blood.mp3" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat9', this)">Play</button>
-            <a href="/music/beatsindex/Blood.mp3" download class="download-btn">Download MP3</a>
+            <div class="beat-title">Blood x Underground Gangsta Rap Type Beat</div>
+            <div class="beat-meta">Trap / Dark Trap</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Blood.mp3" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat9" src="/music/beatsindex/Blood.mp3" type="audio/mpeg"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Where's Your Love</h3>
-            <p class="beat-description">Genre: R&B / Soul</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat10" src="/music/beatsindex/Where's Your Love.mp3" type="audio/mpeg" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat10', this)">Play</button>
-            <a href="/music/beatsindex/Where's Your Love.mp3" download class="download-btn">Download MP3</a>
+            <div class="beat-title">Where's Your Love x Juice World x Lil Peep Type Beat</div>
+            <div class="beat-meta">R&B / Soul</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Where's Your Love.mp3" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat10" src="/music/beatsindex/Where's Your Love.mp3" type="audio/mpeg"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Juice Type Beat</h3>
-            <p class="beat-description">Genre: Hip Hop / Trap</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat11" src="/music/beatsindex/Juicetypebeat.mp3" type="audio/mpeg" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat11', this)">Play</button>
-            <a href="/music/beatsindex/Juicetypebeat.mp3" download class="download-btn">Download MP3</a>
+            <div class="beat-title">You don't Know Me - Juice World Type Beat</div>
+            <div class="beat-meta">Hip Hop / Trap</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Juicetypebeat.mp3" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat11" src="/music/beatsindex/Juicetypebeat.mp3" type="audio/mpeg"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Why - Lil Peep Type Beat</h3>
-            <p class="beat-description">Genre: Emo Rap / Cloud Rap</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat12" src="/music/beatsindex/Lil Peep Type Beat - Why.mp3" type="audio/mpeg" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat12', this)">Play</button>
-            <a href="/music/beatsindex/Lil Peep Type Beat - Why.mp3" download class="download-btn">Download MP3</a>
+            <div class="beat-title">Why - Z-Sixty Type Beat</div>
+            <div class="beat-meta">Emo Rap / Cloud Rap</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Lil Peep Type Beat - Why.mp3" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat12" src="/music/beatsindex/Lil Peep Type Beat - Why.mp3" type="audio/mpeg"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Thorns - Lil Peep Type Beat</h3>
-            <p class="beat-description">Genre: Emo Rap / Cloud Rap</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat13" src="/music/beatsindex/Thorns - Lil Peep Type Beat.mp3" type="audio/mpeg" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat13', this)">Play</button>
-            <a href="/music/beatsindex/Thorns - Lil Peep Type Beat.mp3" download class="download-btn">Download MP3</a>
+            <div class="beat-title">Thorns - Lil Peep Type Beat</div>
+            <div class="beat-meta">Emo Rap / Cloud Rap</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/Thorns - Lil Peep Type Beat.mp3" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat13" src="/music/beatsindex/Thorns - Lil Peep Type Beat.mp3" type="audio/mpeg"></audio>
           </div>
         </div>
 
-        <div class="beat-card">
+        <div class="spotify-beat-card">
+          <img src="/images/1234.png" class="beat-art" alt="Beat Art">
           <div class="beat-info">
-            <h3>Never Die - XXX Tentacion Type Beat</h3>
-            <p class="beat-description">Genre: Emo Rap / Alternative</p>
-          </div>
-          <div class="beat-controls">
-            <audio id="beat14" src="/music/beatsindex/XXX Tentacion Type Beat - Never Die.mp3" type="audio/mpeg" preload="none"></audio>
-            <button class="play-btn" onclick="togglePlay('beat14', this)">Play</button>
-            <a href="/music/beatsindex/XXX Tentacion Type Beat - Never Die.mp3" download class="download-btn">Download MP3</a>
+            <div class="beat-title">Never Die - XXX Tentacion Type Beat</div>
+            <div class="beat-meta">Emo Rap / Alternative</div>
+            <div class="player-controls">
+              <button class="rewind-btn" title="Rewind 10 seconds">&#9194;</button>
+              <button class="play-btn" title="Play/Pause">&#9654;</button>
+              <button class="ff-btn" title="Fast Forward 10 seconds">&#9193;</button>
+              <input type="range" class="seek-bar" min="0" max="100" value="0" step="1">
+              <span class="time-display">0:00 / 0:00</span>
+              <button class="like-btn" title="Like">&#9825;</button>
+              <a href="/music/beatsindex/XXX Tentacion Type Beat - Never Die.mp3" download class="download-btn" title="Download">⬇️</a>
+            </div>
+            <audio id="beat14" src="/music/beatsindex/XXX Tentacion Type Beat - Never Die.mp3" type="audio/mpeg"></audio>
           </div>
         </div>
       </div>
@@ -900,95 +984,76 @@
   <button id="backToTop" class="back-to-top" title="Back to top">&#8679;</button>
 
   <script>
-    // Beat player functionality
-    function togglePlay(beatId, button) {
-      const audio = document.getElementById(beatId);
-      const allAudios = document.querySelectorAll('audio');
-      
-      // Stop all other playing beats
-      allAudios.forEach(a => {
-        if (a.id !== beatId && !a.paused) {
-          a.pause();
-          a.currentTime = 0;
-          const otherButton = a.parentElement.querySelector('.play-btn');
-          if (otherButton) otherButton.textContent = 'Play';
-        }
-      });
-
-      if (audio.paused) {
-        // Ensure audio is loaded and ready
-        if (audio.readyState === 0) {
-          audio.load();
-        }
-        
-        // Play the audio
-        const playPromise = audio.play();
-        
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              button.textContent = 'Pause';
-            })
-            .catch(error => {
-              console.warn('Error playing audio:', error);
-              button.textContent = 'Play';
-              button.disabled = true; // Disable button if playback fails
-              button.title = 'Audio unavailable';
-            });
-        }
-      } else {
-        audio.pause();
-        button.textContent = 'Play';
-      }
-    }
-
-    // Add event listeners when the DOM is loaded
+    // Spotify-style player logic for all beat cards
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize all audio elements
-      document.querySelectorAll('audio').forEach(audio => {
-        // Set preload to none to improve performance
-        audio.setAttribute('preload', 'none');
-        
-        // Add ended event listener
-        audio.addEventListener('ended', function() {
-          const button = this.parentElement.querySelector('.play-btn');
-          if (button) button.textContent = 'Play';
-        });
+      const cards = document.querySelectorAll('.spotify-beat-card');
+      let currentAudio = null;
+      let currentPlayBtn = null;
+      
+      cards.forEach(card => {
+        const audio = card.querySelector('audio');
+        const playBtn = card.querySelector('.play-btn');
+        const rewindBtn = card.querySelector('.rewind-btn');
+        const ffBtn = card.querySelector('.ff-btn');
+        const seekBar = card.querySelector('.seek-bar');
+        const timeDisplay = card.querySelector('.time-display');
+        const likeBtn = card.querySelector('.like-btn');
 
-        // Add error event listener
-        audio.addEventListener('error', function(e) {
-          console.warn('Audio error:', e);
-          const button = this.parentElement.querySelector('.play-btn');
-          if (button) {
-            button.textContent = 'Play';
-            button.disabled = true;
-            button.title = 'Audio unavailable';
+        // Format time helper
+        function formatTime(sec) {
+          if (isNaN(sec)) return '0:00';
+          const m = Math.floor(sec / 60);
+          const s = Math.floor(sec % 60);
+          return `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        // Update time and seek bar
+        function updateTime() {
+          timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+          seekBar.value = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+        }
+
+        // Play/Pause logic
+        playBtn.addEventListener('click', function() {
+          // Pause any other audio
+          if (currentAudio && currentAudio !== audio) {
+            currentAudio.pause();
+            if (currentPlayBtn) currentPlayBtn.innerHTML = '&#9654;';
+          }
+          if (audio.paused) {
+            audio.play();
+            playBtn.innerHTML = '&#10073;&#10073;';
+            currentAudio = audio;
+            currentPlayBtn = playBtn;
+          } else {
+            audio.pause();
+            playBtn.innerHTML = '&#9654;';
           }
         });
 
-        // Add loadedmetadata event listener
-        audio.addEventListener('loadedmetadata', function() {
-          console.log(`Audio ${this.id} metadata loaded successfully`);
+        // Rewind
+        rewindBtn.addEventListener('click', function() {
+          audio.currentTime = Math.max(0, audio.currentTime - 10);
         });
-
-        // Add canplay event listener
-        audio.addEventListener('canplay', function() {
-          console.log(`Audio ${this.id} can play`);
+        // Fast Forward
+        ffBtn.addEventListener('click', function() {
+          audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
         });
-      });
-
-      // Add click event listeners to all download buttons
-      document.querySelectorAll('.download-btn').forEach(button => {
-        button.addEventListener('click', function(e) {
-          // Stop any playing audio when downloading
-          document.querySelectorAll('audio').forEach(audio => {
-            if (!audio.paused) {
-              audio.pause();
-              audio.currentTime = 0;
-              const playButton = audio.parentElement.querySelector('.play-btn');
-              if (playButton) playButton.textContent = 'Play';
-            }
-          });
+        // Seek Bar
+        seekBar.addEventListener('input', function() {
+          const seekTo = (seekBar.value / 100) * audio.duration;
+          audio.currentTime = seekTo;
+        });
+        // Audio events
+        audio.addEventListener('timeupdate', updateTime);
+        audio.addEventListener('loadedmetadata', updateTime);
+        audio.addEventListener('ended', function() {
+          playBtn.innerHTML = '&#9654;';
+          seekBar.value = 0;
+        });
+        // Like button
+        likeBtn.addEventListener('click', function() {
+          likeBtn.classList.toggle('liked');
         });
       });
     });

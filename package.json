@@ -1,0 +1,12 @@
+{
+  "name": "steezycartel",
+  "version": "1.0.0",
+  "description": "The Steezy Cartel Official Website",
+  "scripts": {
+    "dev": "serve public -p 5000",
+    "start": "serve public -p 5000"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+} 

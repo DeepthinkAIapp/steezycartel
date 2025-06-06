@@ -823,7 +823,7 @@ h1 {
 .audio-track audio::-webkit-media-controls-current-time-display,
 .audio-track audio::-webkit-media-controls-time-remaining-display {
   color: white;
-}
+} 
 
 /* Free Beats Section */
 .beats-grid {
@@ -922,4 +922,171 @@ h1 {
   }
 }
 
-/* Remove the deprecated media query completely */ 
+/* Remove the deprecated media query completely */
+
+/* Custom Audio Player Styles for Free Beats */
+.custom-player {
+  flex-direction: column;
+  align-items: stretch;
+  background: linear-gradient(135deg, #1db95433 0%, #ff008033 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border: 1.5px solid #ff008055;
+}
+.custom-player audio {
+  display: none;
+}
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.7rem;
+}
+.player-controls button {
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px #ff008033;
+}
+.player-controls button:hover {
+  background: #ff0080;
+  transform: scale(1.08);
+}
+.player-controls .play-btn {
+  background: linear-gradient(135deg, #ff0080 0%, #ff4d4d 100%);
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+}
+.player-controls .time-display {
+  color: #fff;
+  font-size: 1rem;
+  min-width: 90px;
+  text-align: right;
+  font-family: 'Montserrat', monospace;
+}
+.seek-bar {
+  width: 100%;
+  height: 6px;
+  background: #222;
+  border-radius: 4px;
+  margin-bottom: 0.7rem;
+  accent-color: #ff0080;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+.seek-bar:focus {
+  box-shadow: 0 0 0 2px #ff0080aa;
+}
+@media (max-width: 600px) {
+  .custom-player {
+    padding: 1rem 0.5rem 1.2rem 0.5rem;
+  }
+  .player-controls button, .player-controls .play-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  .player-controls .play-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+  }
+  .player-controls .time-display {
+    font-size: 0.9rem;
+    min-width: 70px;
+  }
+}
+
+/* Spotify-inspired Beat Card Styles */
+.spotify-beat-card {
+  display: flex;
+  align-items: center;
+  background: #181818;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  margin-bottom: 24px;
+  padding: 18px 24px;
+  gap: 24px;
+}
+.beat-art {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.beat-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.beat-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+.beat-meta {
+  font-size: 0.95rem;
+  color: #b3b3b3;
+}
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+.player-controls button,
+.player-controls .download-btn {
+  background: none;
+  border: none;
+  color: #1db954;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.player-controls button:hover,
+.player-controls .download-btn:hover {
+  color: #fff;
+  background: #1db954;
+}
+.seek-bar {
+  width: 120px;
+  accent-color: #1db954;
+  height: 4px;
+  border-radius: 2px;
+}
+.time-display {
+  color: #b3b3b3;
+  font-size: 0.95rem;
+  min-width: 80px;
+  text-align: right;
+}
+.like-btn {
+  font-size: 1.3rem;
+  color: #b3b3b3;
+  transition: color 0.2s;
+}
+.like-btn.liked {
+  color: #1db954;
+}
+
+/* Center the 'Our Artists' section title */
+.artists h2 {
+  text-align: center;
+  width: 100%;
+} 
